@@ -1,4 +1,4 @@
-package com.example.whr.myapplication;
+package com.example.whr.myapplication.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -9,11 +9,14 @@ import android.graphics.Path;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 
+import com.example.whr.myapplication.MyApplication;
+import com.example.whr.myapplication.PublicUtils;
+
 /**
  * Created by whr on 8/7/17.
  */
 
-public class BezierCurve extends View {
+public class BezierCurveView extends View {
 
     private final Paint mPaint;
     private float rectHeight = 0;
@@ -21,7 +24,7 @@ public class BezierCurve extends View {
     private int maxVertex;
     private int maxRectHeight;
 
-    public BezierCurve(Context context) {
+    public BezierCurveView(Context context) {
         super(context);
         mPaint = new Paint();
         mPaint.setColor(Color.WHITE);

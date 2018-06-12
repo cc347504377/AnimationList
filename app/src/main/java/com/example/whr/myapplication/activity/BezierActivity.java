@@ -1,13 +1,14 @@
-package com.example.whr.myapplication;
+package com.example.whr.myapplication.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import com.example.whr.myapplication.R;
+import com.example.whr.myapplication.view.ReView;
 
 public class BezierActivity extends AppCompatActivity {
 

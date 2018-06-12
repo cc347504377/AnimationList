@@ -1,15 +1,20 @@
-package com.example.whr.myapplication;
+package com.example.whr.myapplication.view;
 
 import android.content.Context;
-import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Handler;
-import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
+
+import com.example.whr.myapplication.MyApplication;
+import com.example.whr.myapplication.PublicUtils;
+import com.example.whr.myapplication.R;
 
 /**
  * Created by whr on 8/8/17.
@@ -21,15 +26,18 @@ public class WavyView extends View {
     private int mWavyHeight;
     private final Paint mPaint;
     private int trans;
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            setTranslationX(-trans % MyApplication.mWidthPixels);
-        }
-    };
+    private Handler mHandler = new Handler();
 
     public WavyView(Context context) {
-        super(context);
+        this(context, null);
+    }
+
+    public WavyView(Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs,-1);
+    }
+
+    public WavyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         mPaint = new Paint();
         int color = ContextCompat.getColor(context, R.color.colorSkyBlue);
         mPaint.setColor(color);
@@ -39,6 +47,12 @@ public class WavyView extends View {
         mPaint.setShadowLayer(100, 0, 30, color);
         radian = PublicUtils.dip2px(30);
         trans = 0;
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        setMeasuredDimension(MyApplication.mWidthPixels*2,
+                getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec));
     }
 
     @Override
@@ -56,13 +70,21 @@ public class WavyView extends View {
         canvas.drawPath(path, mPaint);
     }
 
+    private boolean run = true;
+
     public void run() {
+        run = true;
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (true) {
-                    trans +=10;
-                    mHandler.sendEmptyMessage(1);
+                while (run) {
+                    trans += 10;
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            setTranslationX(-trans % MyApplication.mWidthPixels);
+                        }
+                    });
                     try {
                         Thread.sleep(10);
                     } catch (InterruptedException e) {
@@ -72,5 +94,9 @@ public class WavyView extends View {
                 }
             }
         }).start();
+    }
+
+    public void stop() {
+        run = false;
     }
 }

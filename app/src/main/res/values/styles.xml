@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -9,4 +9,13 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
 
+    <style name="AnimationTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowSharedElementEnterTransition">@transition/change_iamge_transform</item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_iamge_transform</item>
+
+        <item name="android:windowActivityTransitions">true</item>
+
+        <item name="android:windowEnterTransition">@transition/change_activity</item>
+        <item name="android:windowExitTransition">@transition/change_activity</item>
+    </style>
 </resources>

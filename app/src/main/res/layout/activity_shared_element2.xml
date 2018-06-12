@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="50dp"
+    android:transitionName="iv"
+    android:translationZ="50dp"
+    tools:context=".activity.SharedElementActivity2">
+
+    <ImageView
+        android:id="@+id/iv_shared"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/colorSkyBlue"
+        android:elevation="10dp"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="50dp"
+        android:text="Hello World"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/cl_snake"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_shared2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="30dp"
+            android:layout_marginEnd="50dp"
+            android:src="@drawable/fab_drawable"
+            app:fabSize="normal"
+            app:rippleColor="@color/colorBlue"/>
+    </android.support.design.widget.CoordinatorLayout>
+
+</FrameLayout>

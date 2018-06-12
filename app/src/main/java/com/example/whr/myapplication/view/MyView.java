@@ -1,4 +1,4 @@
-package com.example.whr.myapplication;
+package com.example.whr.myapplication.view;
 
 import android.app.Activity;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.example.whr.myapplication;
+package com.example.whr.myapplication.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,9 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.example.whr.myapplication.view.MyView;
+import com.example.whr.myapplication.R;
 
 public class PathEffectActivity extends AppCompatActivity {
 

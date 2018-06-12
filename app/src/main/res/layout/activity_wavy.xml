@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.whr.myapplication.WavyActivity"
-    android:background="@color/colorBlack">
+    android:background="@color/colorBlack"
+    tools:context="com.example.whr.myapplication.activity.WavyActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <com.example.whr.myapplication.view.WavyView
+        android:id="@+id/wavy"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="bottom"/>
+
+    <Button
+        android:text="!!!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:onClick="click"/>
+
+</FrameLayout>

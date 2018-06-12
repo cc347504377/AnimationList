@@ -1,4 +1,4 @@
-package com.example.whr.myapplication;
+package com.example.whr.myapplication.view;
 
 import android.content.Context;
 import android.os.Handler;
@@ -14,8 +14,8 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import com.example.whr.myapplication.MyApplication;
+import com.example.whr.myapplication.R;
 
 /**
  * Created by whr on 8/7/17.
@@ -24,13 +24,13 @@ import java.util.TimerTask;
 public class ReView extends FrameLayout {
 
     private final RecyclerView mRecyclerView;
-    private final BezierCurve mBezierCurve;
+    private final BezierCurveView mBezierCurve;
     private Handler mHandler = new Handler();
 
     public ReView(@NonNull Context context) {
         super(context);
         int maxHeight = MyApplication.mHeightPixels / 2;
-        mBezierCurve = new BezierCurve(context);
+        mBezierCurve = new BezierCurveView(context);
         mBezierCurve.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mBezierCurve.setMaxRectHeight(maxHeight);
         addView(mBezierCurve);
