@@ -3,12 +3,14 @@ package com.example.whr.myapplication.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.View
 import android.widget.Toast
 import com.example.whr.myapplication.R
 import kotlinx.android.synthetic.main.activity_shared_element2.*
 
-class SharedElementActivity2 : AppCompatActivity() {
+class SharedElementActivity2 : BaseSwipeBackActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

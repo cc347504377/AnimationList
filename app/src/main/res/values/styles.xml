@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -9,13 +9,20 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
 
-    <style name="AnimationTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AnimationTheme" parent="SwipeBackTheme">
         <item name="android:windowSharedElementEnterTransition">@transition/change_iamge_transform</item>
         <item name="android:windowSharedElementExitTransition">@transition/change_iamge_transform</item>
-
+        <item name="android:windowContentTransitions">true</item>
         <item name="android:windowActivityTransitions">true</item>
-
         <item name="android:windowEnterTransition">@transition/change_activity</item>
         <item name="android:windowExitTransition">@transition/change_activity</item>
+    </style>
+
+    <style name="SwipeBackTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
+        <item name="android:statusBarColor">@color/colorStatBar</item>
     </style>
 </resources>

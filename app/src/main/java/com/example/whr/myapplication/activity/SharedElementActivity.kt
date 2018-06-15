@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +15,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.whr.myapplication.R
 import kotlinx.android.synthetic.main.activity_shared_element.*
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity
+import java.util.*
 
-class SharedElementActivity : AppCompatActivity() {
+class SharedElementActivity : BaseSwipeBackActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,12 +27,37 @@ class SharedElementActivity : AppCompatActivity() {
         for (i in 0..100) {
             list.add("这是第${i}项")
         }
-        rv_shared.apply {
+        val myAdapter = MyAdapter(list)
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
+            override fun getMovementFlags(recyclerView: RecyclerView?, viewHolder: RecyclerView.ViewHolder?): Int {
+                val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN        //允许上下的拖动
+                val swipeFlags = ItemTouchHelper.LEFT   //只允许从右向左侧滑
+                return makeMovementFlags(dragFlags, swipeFlags)
+            }
+
+            override fun onMove(recyclerView: RecyclerView?, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
+                val fromPosition = viewHolder.layoutPosition
+                val toPosition = target.layoutPosition
+                Collections.swap(list, fromPosition, toPosition)
+                myAdapter.notifyItemMoved(fromPosition, toPosition)
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                viewHolder.layoutPosition.let {
+                    list.removeAt(it)
+                    myAdapter.notifyItemRemoved(it)
+                }
+            }
+
+        })
+        itemTouchHelper.attachToRecyclerView(rv_shared.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this@SharedElementActivity)
-            adapter = MyAdapter(list)
+            adapter = myAdapter
             addItemDecoration(Divider())
-        }
+        })
+
     }
 
     inner class MyAdapter(val data: List<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

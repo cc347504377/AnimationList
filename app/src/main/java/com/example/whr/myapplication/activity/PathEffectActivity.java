@@ -10,7 +10,9 @@ import android.widget.TextView;
 import com.example.whr.myapplication.view.MyView;
 import com.example.whr.myapplication.R;
 
-public class PathEffectActivity extends AppCompatActivity {
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
+
+public class PathEffectActivity extends SwipeBackActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

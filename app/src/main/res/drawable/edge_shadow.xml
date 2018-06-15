@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:start="@dimen/swipe_shadow_size">
+        <shape>
+            <solid android:color="@color/colorBackground"/>
+        </shape>
+    </item>
+    <item
+        android:width="@dimen/swipe_shadow_size">
+        <shape android:shape="rectangle">
+            <!--颜色渐变范围-->
+            <gradient
+                android:endColor="#42000000"
+                android:startColor="#00000000"/>
+        </shape>
+    </item>
+
+</layer-list>

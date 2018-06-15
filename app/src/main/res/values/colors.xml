@@ -7,6 +7,10 @@
     <color name="colorSkyBlue">#00ccff</color>
     <color name="colorLightBlue">#60dfff</color>
 
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorBackground">#d1d1d1</color>
+    <color name="colorStatBar">#5db3b3b3</color>
+
     <color name="colorRed">#ff0000</color>
     <color name="colorGreen">#00ff0d</color>
     <color name="colorBlue">#0095ff</color>

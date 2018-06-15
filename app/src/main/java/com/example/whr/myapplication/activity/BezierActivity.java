@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 import com.example.whr.myapplication.R;
 import com.example.whr.myapplication.view.ReView;
 
-public class BezierActivity extends AppCompatActivity {
+public class BezierActivity extends BaseSwipeBackActivity {
 
     private ReView mReView;
 
