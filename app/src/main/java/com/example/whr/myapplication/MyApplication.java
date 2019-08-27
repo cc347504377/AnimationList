@@ -32,5 +32,4 @@ public class MyApplication extends Application {
         mHeightPixels = metrics.heightPixels;
     }
 
-
 }

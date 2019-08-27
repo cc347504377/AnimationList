@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 import com.example.whr.myapplication.R;
 import com.example.whr.myapplication.view.ReView;
 
-public class BezierActivity extends BaseSwipeBackActivity {
+public class BezierActivity extends AppCompatActivity {
 
     private ReView mReView;
 
@@ -18,7 +18,7 @@ public class BezierActivity extends BaseSwipeBackActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_empty);
-        FrameLayout contentView = (FrameLayout) getWindow().getDecorView().findViewById(android.R.id.content);
+        FrameLayout contentView = getWindow().getDecorView().findViewById(android.R.id.content);
         mReView = new ReView(this);
         mReView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         contentView.addView(mReView);

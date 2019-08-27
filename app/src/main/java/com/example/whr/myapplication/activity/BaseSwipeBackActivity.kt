@@ -4,15 +4,18 @@ import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.app.Activity
 import android.app.ActivityOptions
-import android.content.res.Resources
-import android.graphics.*
+import android.graphics.Color
+import android.graphics.Point
+import android.graphics.PointF
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.*
-import com.example.whr.myapplication.R
+import android.view.MotionEvent
+import android.view.View
+import android.view.ViewConfiguration
+import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
-import com.example.whr.myapplication.PublicUtils
+import com.example.whr.myapplication.R
 
 open class BaseSwipeBackActivity : AppCompatActivity() {
 
@@ -63,7 +66,7 @@ open class BaseSwipeBackActivity : AppCompatActivity() {
                 }
             }
             val convertToTranslucent = Activity::class.java.getDeclaredMethod("convertToTranslucent",
-                    translucentConversionListenerClazz, ActivityOptions::class.java)
+                translucentConversionListenerClazz, ActivityOptions::class.java)
             convertToTranslucent.isAccessible = true
             convertToTranslucent.invoke(activity, null, options)
         } catch (t: Throwable) {
@@ -127,7 +130,11 @@ open class BaseSwipeBackActivity : AppCompatActivity() {
                     }
                     tranX += changeX
                     val a = shadowMax - tranX * shadowPer
-                    val shadow = a.toInt().toString(16)
+                    val shadow = a.toInt().toString(16).let {
+                        if (it.length == 1) {
+                            "0$it"
+                        } else it
+                    }
                     decorView.setBackgroundColor(Color.parseColor("#${shadow}000000"))
                     transView.translationX = tranX
                     lastPoint.set(ev.x, ev.y)
@@ -159,6 +166,8 @@ open class BaseSwipeBackActivity : AppCompatActivity() {
 
                     override fun onAnimationEnd(animation: Animator?) {
                         finish()
+                        // 关闭 window 退出动画
+                        overridePendingTransition(0,0)
                     }
 
                     override fun onAnimationCancel(animation: Animator?) {
@@ -190,10 +199,12 @@ open class BaseSwipeBackActivity : AppCompatActivity() {
             addUpdateListener { animation ->
                 tranX = animation.animatedValue as Float
                 val a = shadowMax - tranX * shadowPer
-                if (a >= 16) {
-                    val shadow = a.toInt().toString(16)
-                    decorView.setBackgroundColor(Color.parseColor("#${shadow}000000"))
+                val shadow = a.toInt().toString(16).let {
+                    if (it.length == 1) {
+                        "0$it"
+                    } else it
                 }
+                decorView.setBackgroundColor(Color.parseColor("#${shadow}000000"))
                 transView.translationX = tranX
             }
             start()

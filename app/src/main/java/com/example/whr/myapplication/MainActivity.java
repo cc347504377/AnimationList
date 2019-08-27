@@ -10,7 +10,8 @@ import android.widget.ListView;
 
 import com.example.whr.myapplication.activity.BezierActivity;
 import com.example.whr.myapplication.activity.CircleBezierActivity;
-import com.example.whr.myapplication.activity.Main2Activity;
+import com.example.whr.myapplication.activity.SwipeBackActivity;
+import com.example.whr.myapplication.activity.ToolbarActivity;
 import com.example.whr.myapplication.activity.PathEffectActivity;
 import com.example.whr.myapplication.activity.SceneActivity;
 import com.example.whr.myapplication.activity.SharedElementActivity;
@@ -25,6 +26,7 @@ import java.util.List;
 public class MainActivity extends ListActivity {
 
     private List<String> mList;
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,7 +37,12 @@ public class MainActivity extends ListActivity {
     }
 
     private void initItem() {
-        setListAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mList));
+        List<String> nameList = new ArrayList<>();
+        for (String item : mList) {
+            String name = item.substring(item.lastIndexOf((int) '.') + 1);
+            nameList.add(name);
+        }
+        setListAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, nameList));
     }
 
     @Override
@@ -61,6 +68,7 @@ public class MainActivity extends ListActivity {
         mList.add(VectorActivity.class.getName());
         mList.add(SharedElementActivity.class.getName());
         mList.add(ShadowActivity.class.getName());
-        mList.add(Main2Activity.class.getName());
+        mList.add(ToolbarActivity.class.getName());
+        mList.add(SwipeBackActivity.class.getName());
     }
 }

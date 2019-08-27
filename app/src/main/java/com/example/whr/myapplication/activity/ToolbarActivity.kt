@@ -5,14 +5,21 @@ import android.os.Bundle
 import com.example.whr.myapplication.R
 import kotlinx.android.synthetic.main.activity_main2.*
 
-class Main2Activity : AppCompatActivity() {
+class ToolbarActivity : AppCompatActivity() {
+
+    private var btnHide = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
-        setSupportActionBar(my_toolbar)
+
         button.setOnClickListener {
-            supportActionBar?.hide()
+            if (btnHide) {
+                supportActionBar?.show()
+            } else {
+                supportActionBar?.hide()
+            }
+            btnHide = !btnHide
         }
     }
 }

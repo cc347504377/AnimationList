@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.whr.myapplication">
+    package="com.example.whr.myapplication">
 
     <application
         android:name=".MyApplication"
@@ -13,39 +13,28 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PathEffectActivity">
-        </activity>
-        <activity android:name=".activity.BezierActivity">
-        </activity>
-        <activity android:name=".activity.WavyActivity">
-        </activity>
-        <activity android:name=".activity.CircleBezierActivity">
-        </activity>
-        <activity android:name=".activity.TransitionActivity">
-        </activity>
-        <activity android:name=".activity.SceneActivity">
-        </activity>
-        <activity android:name=".activity.VectorActivity">
-        </activity>
+        <activity android:name=".activity.PathEffectActivity" />
+        <activity android:name=".activity.BezierActivity" />
+        <activity android:name=".activity.WavyActivity" />
+        <activity android:name=".activity.CircleBezierActivity" />
+        <activity android:name=".activity.TransitionActivity" />
+        <activity android:name=".activity.SceneActivity" />
+        <activity android:name=".activity.VectorActivity" />
         <activity
             android:name=".activity.SharedElementActivity"
-            android:theme="@style/AnimationTheme">
-        </activity>
+            android:theme="@style/AnimationTheme" />
         <activity
             android:name=".activity.SharedElementActivity2"
-            android:theme="@style/AnimationTheme">
-        </activity>
-        <activity android:name=".activity.ShadowActivity">
-        </activity>
-        <activity android:name=".activity.Main2Activity">
-        </activity>
-        <activity android:name=".activity.BaseSwipeBackActivity">
-        </activity>
+            android:theme="@style/AnimationTheme" />
+        <activity android:name=".activity.ShadowActivity" />
+        <activity android:name=".activity.ToolbarActivity" />
+        <activity android:name=".activity.BaseSwipeBackActivity" />
+        <activity android:name=".activity.SwipeBackActivity" />
     </application>
 
 </manifest>
